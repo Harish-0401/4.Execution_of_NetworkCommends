@@ -26,7 +26,8 @@ This commands includes
 • Other IP Commands e.g. show ip route etc.
 <BR>
 ## Programe
-Server 
+~~~
+Server :
 ~~~
 import socket
 
@@ -47,7 +48,6 @@ print("Got connection from", addr)
 filename = "sample.txt"  # Make sure this file exists
 with open(filename, "rb") as f:
     data = f.read(1024)
-    
     while data:
         conn.send(data)
         data = f.read(1024)
@@ -57,36 +57,38 @@ print("File sent successfully")
 conn.close()
 s.close()
 ~~~
-## Client :
 ~~~
+Client :
+~~~
+~~~
+
 import socket
 
-# Create socket
 s = socket.socket()
 
 host = socket.gethostname()
 port = 60000
 
-# Connect to server
+
 s.connect((host, port))
 
-# Receive file
+
 with open("received_file.txt", "wb") as f:
     while True:
         print("Receiving data...")
         
-        data = s.recv(1024)
-        print("Data =", data)
+data = s.recv(1024)
+    print("Data =", data)
 
-        if not data:
-            break
-
-        f.write(data)
+  if not data:
+     break
+  f.write(data)
 
 print("Successfully received the file")
 
 s.close()
 print("Connection closed")
+~~~
 ~~~
 ## Output
 ## Server
