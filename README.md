@@ -92,9 +92,11 @@ print("Connection closed")
 ~~~
 ## Output
 ## Server
-<img width="359" height="70" alt="image" src="https://github.com/user-attachments/assets/858f2fcb-cf74-4f98-bcae-88eabf518666" />
+<img width="616" height="483" alt="WhatsApp Image 2026-05-20 at 3 42 56 PM" src="https://github.com/user-attachments/assets/cfde1c4a-65c5-495d-934e-6bb5518025b3" />
+
 ## Client 
-<img width="664" height="103" alt="image" src="https://github.com/user-attachments/assets/afd88e44-fdf2-4207-ab26-38825f8ab39d" />
+<img width="616" height="483" alt="WhatsApp Image 2026-05-20 at 3 42 56 PM" src="https://github.com/user-attachments/assets/fa8da9e1-c2e0-4dd6-9b6e-172174553c1e" />
+
 
 
 ## Result
