@@ -26,76 +26,63 @@ This commands includes
 • Other IP Commands e.g. show ip route etc.
 <BR>
 ## Programe
+## Service 
 ~~~
-Server :
 ~~~
+import socket
+from pythonping import ping
+
+s = socket.socket()
+
+s.bind(('localhost', 8000))
+s.listen(5)
+
+print("Server waiting for connection...")
+
+c, addr = s.accept()
+print("Connected to:", addr)
+
+while True:
+    hostname = c.recv(1024).decode()
+
+if not hostname:
+        break
+
+  try:
+        result = ping(hostname, verbose=False)
+        c.send(str(result).encode())
+    except Exception:
+        c.send("Not Found".encode())
+
+c.close()
+s.close()
+
+## Client 
+
 import socket
 
 s = socket.socket()
 
-host = socket.gethostname()
-port = 60000
+s.connect(('localhost', 8000))
 
+while True:
+    ip = input("Enter the website you want to ping: ")
 
-s.bind((host, port))
-s.listen(1)
+s.send(ip.encode())
 
-print("Server listening...")
+response = s.recv(1024).decode()
 
-conn, addr = s.accept()
-print("Got connection from", addr)
-
-filename = "sample.txt"  # Make sure this file exists
-with open(filename, "rb") as f:
-    data = f.read(1024)
-    while data:
-        conn.send(data)
-        data = f.read(1024)
-
-print("File sent successfully")
-
-conn.close()
-s.close()
-~~~
-~~~
-Client :
-~~~
-~~~
-
-import socket
-
-s = socket.socket()
-
-host = socket.gethostname()
-port = 60000
-
-
-s.connect((host, port))
-
-
-with open("received_file.txt", "wb") as f:
-    while True:
-        print("Receiving data...")
-        
-data = s.recv(1024)
-    print("Data =", data)
-
-  if not data:
-     break
-  f.write(data)
-
-print("Successfully received the file")
-
-s.close()
-print("Connection closed")
+ print(response)
 ~~~
 ~~~
 ## Output
 ## Server
-<img width="616" height="483" alt="WhatsApp Image 2026-05-20 at 3 42 56 PM" src="https://github.com/user-attachments/assets/cfde1c4a-65c5-495d-934e-6bb5518025b3" />
+<img width="616" height="483" alt="WhatsApp Image 2026-05-20 at 3 42 56 PM" src="https://github.com/user-attachments/assets/7739f415-d9b6-492b-9418-0786e01c7039" />
+
 
 ## Client 
-<img width="616" height="483" alt="WhatsApp Image 2026-05-20 at 3 42 56 PM" src="https://github.com/user-attachments/assets/fa8da9e1-c2e0-4dd6-9b6e-172174553c1e" />
+<img width="652" height="113" alt="WhatsApp Image 2026-05-20 at 3 43 05 PM" src="https://github.com/user-attachments/assets/6158cf3a-61a0-4e76-a2d2-60b857578460" />
+
 
 
 
